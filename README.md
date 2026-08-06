@@ -1,4 +1,4 @@
-# 🚀 Job Portal
+#  Job Portal
 
 A Full Stack Job Portal built using React, Supabase, PostgreSQL, and n8n.
 
