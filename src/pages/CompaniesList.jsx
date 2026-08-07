@@ -53,7 +53,6 @@ if (loading) return (
 
   if (error) return <div style={{ textAlign: 'center', color: '#dc3545', marginTop: '50px', fontFamily: 'sans-serif' }}>Error: {error}</div>;
 
-
   return (
     <div style={{ padding: '40px 20px', maxWidth: '900px', margin: '0 auto', fontFamily: '"Segoe UI", Roboto, Helvetica, Arial, sans-serif', backgroundColor: '#f8f9fa', borderRadius: '12px' }}>
       <h2 style={{ textAlign: 'center', marginBottom: '30px', color: '#212529', fontWeight: '700', letterSpacing: '-0.5px' }}>Registered Companies</h2>
@@ -85,21 +84,27 @@ if (loading) return (
                 
                 <hr style={{ border: '0', height: '1px', backgroundColor: '#f1f3f5', margin: '0 0 16px 0' }} />
 
-                {/* 2. Job Title */}
+                {/* 2. Company E-mail */}
                 <p style={{ margin: '0 0 8px 0', color: '#495057', fontSize: '15px' }}>
                   <strong style={{ color: '#212529' }}>Company Email:</strong> {company.email || 'N/A'}
                 </p>
                 
-                {/* 3. Salary */}
+                {/* 3. Location */}
                 <p style={{ margin: '0 0 8px 0', color: '#495057', fontSize: '15px' }}>
                   <strong style={{ color: '#212529' }}>Location:</strong> <span style={{ color: '#198754', fontWeight: '600' }}>{company.location || 'N/A'}</span>
                 </p>
               </div>
+              
+              {/* 3. Location */}
+                <p style={{ margin: '0 0 8px 0', color: '#495057', fontSize: '15px' }}>
+                  <strong style={{ color: '#212529' }}>Website:</strong> <span style={{ color: '#198754', fontWeight: '600' }}>{company.website || 'N/A'}</span>
+                </p>
 
               {/* 4. Location Badge */}
               <div style={{ marginTop: '16px', display: 'flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#6c757d', backgroundColor: '#f1f3f5', padding: '6px 12px', borderRadius: '20px', width: 'fit-content' }}>
                 <span>📍</span> {company.location || 'N/A'}
               </div>
+
             </div>
           ))}
         </div>

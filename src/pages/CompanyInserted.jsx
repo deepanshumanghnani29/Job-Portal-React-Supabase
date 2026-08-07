@@ -6,6 +6,7 @@ const CompanyForm = () => {
   const [formData, setFormData] = useState({
     company_name: '',
     email: '',
+    website: '',
     location: ''
   });
 
@@ -32,9 +33,8 @@ const CompanyForm = () => {
           {
             company_name: formData.company_name,
             email: formData.email,
-            salary: formData.salary,
-            location: 'Bengaluru, India', // Default placeholder
-            type: 'Full Time'             // Default placeholder
+            website: formData.website,
+            location: formData.location 
           }
         ]);
 
@@ -47,7 +47,7 @@ const CompanyForm = () => {
       setStatus({ loading: false, success: true, error: null });
       
       // Clear out form inputs for the next submission
-      setFormData({ company_name: '', email: '', location: '' });
+      setFormData({ company_name: '', email: '', location: '', website: '' });
 
     } catch (err) {
       // Show the actual Supabase error message on the screen
@@ -62,7 +62,7 @@ const CompanyForm = () => {
       {/* Success Notification Status Banner */}
       {status.success && (
         <div style={{ color: '#155724', backgroundColor: '#d4edda', border: '1px solid #c3e6cb', padding: '12px', borderRadius: '6px', marginBottom: '20px', fontWeight: '600' }}>
-           Data successfully saved!
+          Data successfully saved!
         </div>
       )}
 
@@ -92,9 +92,22 @@ const CompanyForm = () => {
           <input 
             type="text" 
             name="email"
-            value={formData.title}
+            value={formData.email}
             onChange={handleChange}
             placeholder="e.g. google@gmail.com" 
+            required
+            style={{ width: '100%', padding: '8px', boxSizing: 'border-box', borderRadius: '4px', border: '1px solid #ccc' }}
+          />
+        </div>
+
+        <div className="form-group" style={{ marginBottom: '20px' }}>
+          <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Website</label>
+          <input 
+            type="text" 
+            name="Website"
+            value={formData.website}
+            onChange={handleChange}
+            placeholder="e.g. www.company.com" 
             required
             style={{ width: '100%', padding: '8px', boxSizing: 'border-box', borderRadius: '4px', border: '1px solid #ccc' }}
           />
@@ -105,7 +118,7 @@ const CompanyForm = () => {
           <input 
             type="text" 
             name="location"
-            value={formData.salary}
+            value={formData.location}
             onChange={handleChange}
             placeholder="e.g. Bengaluru, India" 
             required
