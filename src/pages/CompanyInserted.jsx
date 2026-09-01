@@ -38,10 +38,7 @@ const CompanyForm = () => {
           }
         ]);
 
-      // If Supabase returns an error, throw it so the catch block catches it
-      if (error) {
-        throw error;
-      }
+      if (error) throw error;
 
       // 4. If Supabase responds with success
       setStatus({ loading: false, success: true, error: null });
@@ -50,14 +47,13 @@ const CompanyForm = () => {
       setFormData({ company_name: '', email: '', location: '', website: '' });
 
     } catch (err) {
-      // Show the actual Supabase error message on the screen
       setStatus({ loading: false, success: false, error: err.message });
     }
   };
 
   return (
     <div className="form-container" style={{ maxWidth: '500px', margin: '40px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px', fontFamily: 'sans-serif' }}>
-      <h2 style={{ textAlign: 'center' }}>Insert New Company / Job</h2>
+      <h2 style={{ textAlign: 'center' }}>Add New Company</h2>
       
       {/* Success Notification Status Banner */}
       {status.success && (
@@ -90,7 +86,7 @@ const CompanyForm = () => {
         <div className="form-group" style={{ marginBottom: '15px' }}>
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Company Email</label>
           <input 
-            type="text" 
+            type="email" 
             name="email"
             value={formData.email}
             onChange={handleChange}
@@ -104,7 +100,7 @@ const CompanyForm = () => {
           <label style={{ display: 'block', marginBottom: '5px', fontWeight: 'bold' }}>Website</label>
           <input 
             type="text" 
-            name="Website"
+            name="website" /* ✅ FIXED: Changed "Website" to "website" */
             value={formData.website}
             onChange={handleChange}
             placeholder="e.g. www.company.com" 

@@ -43,13 +43,13 @@ body {
   margin-bottom: 30px;
 }
 
-.top img{
+.top img {
   height: 42px;
-  width: 42px;
-  border-radius: 50%;
+  width: auto;
+  border-radius: 0;
   border: 1px solid #dadada;
   padding: 3px;
-  object-fit: cover;
+  object-fit: contain;
 }
 .top button{
   display: flex;

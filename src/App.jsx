@@ -34,13 +34,12 @@ const App = () => {
       {session && <Navbar />} 
       
       <Routes>
-        {/* If not logged in, send them to Auth. If logged in, redirect away from Auth to /jobs */}
-        <Route path="/" element={!session ? <Auth /> : <Navigate to="/jobs" />} />
+        {/* ✅ FIXED: When logged in, renders blank content instead of redirecting to /jobs */}
+        <Route path="/" element={!session ? <Auth /> : <div style={{ minHeight: '100vh', backgroundColor: '#fff' }}></div>} />
         
         {/* Protected Routes */}
         <Route path="/jobs" element={session ? <JobPage /> : <Navigate to="/" />} />
         <Route path="/company-form" element={session ? <CompanyForm /> : <Navigate to="/" />} />
-        
         <Route path="/companies" element={session ? <CompaniesList /> : <Navigate to="/" />} />
 
         {/* Fallback route */}

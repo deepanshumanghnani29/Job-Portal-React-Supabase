@@ -90,12 +90,12 @@ if (loading) return (
                 </p>
                 
                 {/* 3. Location */}
-                <p style={{ margin: '0 0 8px 0', color: '#495057', fontSize: '15px' }}>
+                {/* <p style={{ margin: '0 0 8px 0', color: '#495057', fontSize: '15px' }}>
                   <strong style={{ color: '#212529' }}>Location:</strong> <span style={{ color: '#198754', fontWeight: '600' }}>{company.location || 'N/A'}</span>
-                </p>
+                </p> */}
               </div>
               
-              {/* 3. Location */}
+              {/* 5. website */}
                 <p style={{ margin: '0 0 8px 0', color: '#495057', fontSize: '15px' }}>
                   <strong style={{ color: '#212529' }}>Website:</strong> <span style={{ color: '#198754', fontWeight: '600' }}>{company.website || 'N/A'}</span>
                 </p>

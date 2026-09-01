@@ -2,22 +2,42 @@ import React, { useState } from "react";
 
 const Card = (props) => {
   const [isSaved, setIsSaved] = useState(false);
+  const [imgError, setImgError] = useState(false);
 
-  // Generate initial letter avatar if brand logo isn't available
-  const companyInitial = props.company ? props.company.charAt(0).toUpperCase() : "G";
+  const getFaviconUrl = (url) => {
+    if (!url) return null;
+    try {
+      const formattedUrl = url.startsWith("http") ? url : `https://${url}`;
+      const domain = new URL(formattedUrl).hostname;
+      return `https://www.google.com/s2/favicons?domain=${domain}&sz=128`;
+    } catch {
+      return null;
+    }
+  };
+
+  const companyInitial = props.company
+    ? props.company.charAt(0).toUpperCase()
+    : "G";
+
+  const faviconUrl = getFaviconUrl(props.url);
+  const logoSrc = faviconUrl || props.brandLogo;
 
   return (
     <div className="card">
       <div className="top">
         <div className="company-logo">
-          {props.brandLogo ? (
-            <img src={props.brandLogo} alt={props.company} />
+          {logoSrc && !imgError ? (
+            <img
+              src={logoSrc}
+              alt={props.company || "Company logo"}
+              onError={() => setImgError(true)}
+            />
           ) : (
             <div className="avatar-placeholder">{companyInitial}</div>
           )}
         </div>
-        <button 
-          className={`save-btn ${isSaved ? "saved" : ""}`} 
+        <button
+          className={`save-btn ${isSaved ? "saved" : ""}`}
           onClick={() => setIsSaved(!isSaved)}
           title="Save job"
         >
@@ -28,7 +48,9 @@ const Card = (props) => {
       <div className="center">
         <div className="company-info">
           <span className="company-name">{props.company}</span>
-          {props.dayposted && <span className="post-date">{props.dayposted}</span>}
+          {props.dayposted && (
+            <span className="post-date">{props.dayposted}</span>
+          )}
         </div>
         <h2 className="job-title">{props.post}</h2>
         <div className="tag-group">
